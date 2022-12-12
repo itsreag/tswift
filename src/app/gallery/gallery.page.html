@@ -1,0 +1,41 @@
+
+<ion-menu contentId="main-menu">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title >TSwift</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item routerLink="/home">
+        <ion-icon name="person" slot="start" ></ion-icon>
+        <ion-label>About</ion-label>
+      </ion-item>
+      <ion-item routerLink="/album">
+        <ion-icon name="heart-circle" slot="start"></ion-icon>
+        <ion-label >Albums</ion-label>
+      </ion-item>
+      <ion-item routerLink="/tracks">
+        <ion-icon name="musical-notes"  slot="start"></ion-icon>
+        <ion-label>Tracks</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+  <ion-content>
+    <div class="top">
+      <div>
+        <ion-buttons slot="start" class="menu-button" id="main-menu">
+          <ion-menu-button color="light"></ion-menu-button>
+          <ion-label>GALLERY</ion-label>
+        </ion-buttons>
+      </div>
+    </div>
+    <div class="content-div">
+      <div class="images">
+        <div class="one-image" *ngFor="let image of images">
+          <img src="../../../assets/gallery/{{image}}">
+        </div>
+      </div>
+    </div>
+  </ion-content>
