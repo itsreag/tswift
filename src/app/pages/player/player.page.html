@@ -18,14 +18,10 @@
     <ion-card-content text-center fullscreen="true" >
       <h2>{{cmSong}}</h2>
       <p></p>
-      <ion-item class="ion-no-padding">
+      <ion-item >
         <ion-range #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()" max="{{maxRangeValue}}"[(ngModel)]="currRangeTime"></ion-range>
-        <ion-label slot="start">
-          <ion-text><b>{{currSecsText}}</b></ion-text>
-        </ion-label>
-        <ion-label slot="end">
-          <ion-text><b>{{durationText}}</b></ion-text>
-        </ion-label>
+          <ion-text slot="start"><b>{{currSecsText}}</b></ion-text>
+          <ion-text slot="end"><b>{{durationText}}</b></ion-text>
       </ion-item>
       
 
