@@ -7,33 +7,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-  <ion-card class="music-card">
+<ion-content >
+  <div *ngFor="let song of songs">
+    
+  
+  <ion-card class="music-card" *ngIf="song.title==cmSong" (click)="playSong(song.title, song.subtitle, song.img, song.path)">
     <ion-card-header>
-      <img src="/assets/album-cover/1.jpeg"/>
+      <img src="{{song.img}}"/>
     </ion-card-header>
-    <ion-card-content text-center fullscreen="true">
-      <h2>29 #Strafford APTS</h2>
-      <p>Bon Iver — 22, A Million</p>
+    <ion-card-content text-center fullscreen="true" >
+      <h2>{{cmSong}}</h2>
+      <p></p>
+      <ion-item class="ion-no-padding">
+        <ion-range #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()" max="{{maxRangeValue}}"[(ngModel)]="currRangeTime"></ion-range>
+        <ion-label slot="start">
+          <ion-text><b>{{currSecsText}}</b></ion-text>
+        </ion-label>
+        <ion-label slot="end">
+          <ion-text><b>{{durationText}}</b></ion-text>
+        </ion-label>
+      </ion-item>
+      
 
-      <ion-progress-bar value=".10"></ion-progress-bar>
-
-      <ion-button color="dark" fill="clear" size="small">
+      <!-- <ion-button color="dark" fill="clear" size="small">
         <ion-icon slot="icon-only" name="shuffle"></ion-icon>
-      </ion-button>
-      <ion-button color="dark" fill="clear" size="large">
+      </ion-button> -->
+      <ion-button color="dark" fill="clear" size="large" (click)="playPrev()">
         <ion-icon slot="icon-only" name="play-back"></ion-icon>
       </ion-button>
-      <ion-button color="dark" fill="clear" class="button-largest">
+      <ion-button color="dark" fill="clear" class="button-largest" *ngIf="!isPlaying" (click)="play()">
         <ion-icon slot="icon-only" name="play"></ion-icon>
       </ion-button>
-      <ion-button color="dark" fill="clear" size="large">
+      <ion-button color="dark" fill="clear" class="button-largest" *ngIf="isPlaying" (click)="pause()">
+        <ion-icon slot="icon-only" name="pause"></ion-icon>
+      </ion-button>
+      <ion-button color="dark" fill="clear" size="large" (click)="playNext()">
         <ion-icon slot="icon-only" name="play-forward"></ion-icon>
       </ion-button>
-      <ion-button color="dark" fill="clear" size="small">
+      <!-- <ion-button color="dark" fill="clear" size="small">
         <ion-icon slot="icon-only" name="repeat"></ion-icon>
-      </ion-button>
+      </ion-button> -->
 
       <div>
         <ion-text style="white-space: pre-line">
@@ -46,6 +59,6 @@
     </ion-card-content>
 
    
-  </ion-card>
+  </ion-card></div>
 
 </ion-content>
