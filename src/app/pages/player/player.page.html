@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>player</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button (click)="cancel()"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
   <div *ngFor="let song of songs">
     
   
-  <ion-card class="music-card" *ngIf="song.title==cmSong" (click)="playSong(song.title, song.subtitle, song.img, song.path)">
+  <ion-card class="music-card" *ngIf="song.title==cmSong">
     <ion-card-header>
       <img src="{{song.img}}"/>
     </ion-card-header>
@@ -31,7 +31,7 @@
       <ion-button color="dark" fill="clear" size="large" (click)="playPrev()">
         <ion-icon slot="icon-only" name="play-back"></ion-icon>
       </ion-button>
-      <ion-button color="dark" fill="clear" class="button-largest" *ngIf="!isPlaying" (click)="play()">
+      <ion-button color="dark" fill="clear" class="button-largest" *ngIf="!isPlaying" (click)="playSong(song.title, song.subtitle, song.img, song.path)">
         <ion-icon slot="icon-only" name="play"></ion-icon>
       </ion-button>
       <ion-button color="dark" fill="clear" class="button-largest" *ngIf="isPlaying" (click)="pause()">
