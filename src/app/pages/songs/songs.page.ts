@@ -30,6 +30,8 @@ export class SongsPage implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    this.songSelected=""; 
+    console.log(this.songSelected);
   }
   selectedSong(title:string){
     // var index = this.songs.findIndex(x=>x.title==title);

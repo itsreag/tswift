@@ -65,7 +65,10 @@ export class PlayerPage implements OnInit {
   constructor(private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit() {
+    // console.log(this.currSong);
     this.cmSong=this.route.snapshot.paramMap.get('song');
+    this.currTitle=this.cmSong;
+
   }
 
 
@@ -74,8 +77,9 @@ export class PlayerPage implements OnInit {
   // }
 
   playSong(title:string,subTitle:string,img:any,song:any){
-    if(this.currSong !=null){
+    if(this.currSong!=null){
       this.currSong.pause();
+      this.isPlaying=false;
     }
 
     this.currTitle = title;
@@ -86,17 +90,17 @@ export class PlayerPage implements OnInit {
     this.currSong.play().then(()=>{
       this.durationText=this.sToTime(this.currSong.duration);
       this.maxRangeValue=Number(this.currSong.duration.toFixed(2).toString().substring(0,5));
-      var index = this.songs.findIndex(x=>x.title==this.currTitle);
+      // var index = this.songs.findIndex(x=>x.title==this.currTitle);
 
-      if((index+1)==this.songs.length){
-        this.upNextImg=this.songs[0].img;
-        this.upNextSubtitle=this.songs[0].subtitle;
-        this.upNextTitle=this.songs[0].title;
-      }else{
-        this.upNextImg=this.songs[index+1].img;
-        this.upNextSubtitle=this.songs[index+1].subtitle;
-        this.upNextTitle=this.songs[index+1].title;
-      }
+      // if((index+1)==this.songs.length){
+      //   this.upNextImg=this.songs[0].img;
+      //   this.upNextSubtitle=this.songs[0].subtitle;
+      //   this.upNextTitle=this.songs[0].title;
+      // }else{
+      //   this.upNextImg=this.songs[index+1].img;
+      //   this.upNextSubtitle=this.songs[index+1].subtitle;
+      //   this.upNextTitle=this.songs[index+1].title;
+      // }
       this.isPlaying=true;
     })
 
@@ -126,11 +130,15 @@ export class PlayerPage implements OnInit {
     var index = this.songs.findIndex(x=>x.title==this.currTitle);
 
     if((index+1)==this.songs.length){
+      this.cmSong=this.songs[0].title;
       this.playSong(this.songs[0].title, this.songs[0].subtitle, this.songs[0].img, this.songs[0].path);
     }else{
       var nextIndex = index+1;
-      this.playSong(this.songs[nextIndex].title, this.songs[nextIndex].subtitle, this.songs[nextIndex].img, this.songs[nextIndex].path)
+      this.cmSong=this.songs[nextIndex].title;
+      this.playSong(this.songs[nextIndex].title, this.songs[nextIndex].subtitle, this.songs[nextIndex].img, this.songs[nextIndex].path);
+      
     }
+    console.log("next Song: "+ this.cmSong);
   }
 
   playPrev(){
@@ -138,9 +146,11 @@ export class PlayerPage implements OnInit {
 
     if(index==0){
       var lastIndex = this.songs.length-1;
+      this.cmSong=this.songs[lastIndex].title;
       this.playSong(this.songs[lastIndex].title, this.songs[lastIndex].subtitle, this.songs[lastIndex].img, this.songs[lastIndex].path);
     }else{
       var prevIndex = index-1;
+      this.cmSong=this.songs[prevIndex].title;
       this.playSong(this.songs[prevIndex].title, this.songs[prevIndex].subtitle, this.songs[prevIndex].img, this.songs[prevIndex].path);
       
     }
