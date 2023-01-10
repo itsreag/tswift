@@ -50,6 +50,46 @@ const routes: Routes = [
     path: 'sign-up-page',
     loadChildren: () => import('./sign-up-page/sign-up-page.module').then( m => m.SignUpPagePageModule)
   },
+  {
+    path: 'album1',
+    loadChildren: () => import('./album-page/album1/album1.module').then( m => m.Album1PageModule)
+  },
+  {
+    path: 'album2',
+    loadChildren: () => import('./album-page/album2/album2.module').then( m => m.Album2PageModule)
+  },
+  {
+    path: 'album3',
+    loadChildren: () => import('./album-page/album3/album3.module').then( m => m.Album3PageModule)
+  },
+  {
+    path: 'album4',
+    loadChildren: () => import('./album-page/album4/album4.module').then( m => m.Album4PageModule)
+  },
+  {
+    path: 'album5',
+    loadChildren: () => import('./album-page/album5/album5.module').then( m => m.Album5PageModule)
+  },
+  {
+    path: 'album6',
+    loadChildren: () => import('./album-page/album6/album6.module').then( m => m.Album6PageModule)
+  },
+  {
+    path: 'album7',
+    loadChildren: () => import('./album-page/album7/album7.module').then( m => m.Album7PageModule)
+  },
+  {
+    path: 'album8',
+    loadChildren: () => import('./album-page/album8/album8.module').then( m => m.Album8PageModule)
+  },
+  {
+    path: 'album9',
+    loadChildren: () => import('./album-page/album9/album9.module').then( m => m.Album9PageModule)
+  },
+  {
+    path: 'album10',
+    loadChildren: () => import('./album-page/album10/album10.module').then( m => m.Album10PageModule)
+  },
 
 
 ];
