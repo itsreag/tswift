@@ -42,13 +42,6 @@ const routes: Routes = [
   {
     path: 'player/:song',
     loadChildren: () => import('./pages/player/player.module').then( m => m.PlayerPageModule)
-  },  {
-    path: 'login-page',
-    loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
-  },
-  {
-    path: 'sign-up-page',
-    loadChildren: () => import('./sign-up-page/sign-up-page.module').then( m => m.SignUpPagePageModule)
   },
   {
     path: 'album1',
