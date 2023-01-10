@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { Album8PageRoutingModule } from './album8-routing.module';
 
-import { LoginPage } from './login.page';
+import { Album8Page } from './album8.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    Album8PageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [Album8Page]
 })
-export class LoginPageModule {}
+export class Album8PageModule {}
