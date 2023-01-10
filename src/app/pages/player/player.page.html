@@ -9,8 +9,6 @@
 
 <ion-content >
   <div *ngFor="let song of songs">
-    
-  
   <ion-card class="music-card" *ngIf="song.title==cmSong">
     <ion-card-header>
       <img src="{{song.img}}"/>
@@ -23,7 +21,6 @@
           <ion-text slot="start"><b>{{currSecsText}}</b></ion-text>
           <ion-text slot="end"><b>{{durationText}}</b></ion-text>
       </ion-item>
-      
 
       <!-- <ion-button color="dark" fill="clear" size="small">
         <ion-icon slot="icon-only" name="shuffle"></ion-icon>
@@ -53,8 +50,6 @@
         </ion-text>
       </div>
     </ion-card-content>
-
-   
   </ion-card></div>
 
 </ion-content>
