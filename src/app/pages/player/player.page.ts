@@ -31,7 +31,7 @@ export class PlayerPage implements OnInit {
   // Current song details
   currTitle:any;
   currSubtitle:any;
-  currImage:any; 
+  currImage:any;
 
   // Progress bar value
   progress = 0;
@@ -59,8 +59,6 @@ export class PlayerPage implements OnInit {
   currSong!: HTMLAudioElement;
 
   cmSong:any;
-
- 
 
   constructor(private router:Router, private route:ActivatedRoute) { }
 
@@ -109,7 +107,6 @@ export class PlayerPage implements OnInit {
         this.currRangeTime=Number(this.currSong.currentTime.toFixed(2).toString().substring(0,5));
         this.currSecsText=this.sToTime(this.currSong.currentTime);
         this.progress=(Math.floor(this.currSong.currentTime)/Math.floor(this.currSong.duration));
-        
         if(this.currSong.currentTime==this.currSong.duration){
           this.playNext();
         }
@@ -136,7 +133,7 @@ export class PlayerPage implements OnInit {
       var nextIndex = index+1;
       this.cmSong=this.songs[nextIndex].title;
       this.playSong(this.songs[nextIndex].title, this.songs[nextIndex].subtitle, this.songs[nextIndex].img, this.songs[nextIndex].path);
-      
+
     }
     console.log("next Song: "+ this.cmSong);
   }
@@ -152,7 +149,7 @@ export class PlayerPage implements OnInit {
       var prevIndex = index-1;
       this.cmSong=this.songs[prevIndex].title;
       this.playSong(this.songs[prevIndex].title, this.songs[prevIndex].subtitle, this.songs[prevIndex].img, this.songs[prevIndex].path);
-      
+
     }
   }
 
