@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>sign-up-page</ion-title>
+    <ion-title>Become a Swiftie</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-avatar class="avatar" >
+      <img src="http://www.precision-spine.com/wp-content/uploads/2015/09/person-icon.png">
+      </ion-avatar>
+    <ion-card-header>
+      <ion-card-subtitle>Join Us</ion-card-subtitle>
+      <ion-card-title>Sign-up Now</ion-card-title>
+    </ion-card-header>
+  <ion-card-content>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()">
+    <ion-item>
+      <ion-label position="floating">Email Address: </ion-label>
+      <ion-input type="text" formControlName="email" placeholder="Enter Email Address"></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message" *ngIf="signUpForm.get('email')?.hasError(validation.type) && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span>{{ validation.message }}</span>
+        </div>
+      </ng-container>
+    </div>
+<!--Password-->
+    <ion-item>
+      <ion-label position="floating">Password: </ion-label>
+      <ion-input type="password" formControlName="password" placeholder="Enter Password"></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message" *ngIf="signUpForm.get('password')?.hasError(validation.type) && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span>{{ validation.message }}</span>
+        </div>
+      </ng-container>
+    </div>
+  <ion-button type="submit" expand="block" [disabled]="!signUpForm.valid">Create Account</ion-button>
+  <ion-button fill="clear" expand="block" [routerLink]="['/login-page']">
+    I already have an account.
+  </ion-button>
+  </form>
+</ion-card-content>
+</ion-card>
 </ion-content>
